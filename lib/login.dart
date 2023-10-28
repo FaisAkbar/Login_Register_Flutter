@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 10),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(50.0),
-                  child: Image.asset('../Assets/logo.png',
+                  child: Image.asset('Assets/images/logo.png',
                       width: 300, height: 300, fit: BoxFit.cover),
                 ),
                 const SizedBox(height: 25),

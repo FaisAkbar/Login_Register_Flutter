@@ -46,7 +46,7 @@ class CustomSplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('../Assets/logo.png'),
+            Image.asset('Assets/images/logo.png'),
             const SizedBox(height: 16.0),
             const CircularProgressIndicator()
           ],
