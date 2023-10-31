@@ -18,6 +18,8 @@ class _RegisterPageState extends State<RegisterPage> {
   String password = '';
   String confirmPassword = '';
   String address = '';
+  bool _passwordVisible = true;
+  bool _confirmPasswordVisible = true;
 
 // Validator
 
@@ -147,29 +149,54 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 16),
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: "Password",
                           hintText: "Enter your password",
-                          labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                          prefixIcon: Icon(Icons.password),
+                          labelStyle:
+                              const TextStyle(fontWeight: FontWeight.bold),
+                          prefixIcon: const Icon(Icons.password),
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                            child: Icon(_passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                          ),
                         ),
                         validator: passwordValidator,
                         onSaved: (value) {
                           password = value!;
                         },
+                        obscureText: _passwordVisible,
                       ),
                       const SizedBox(height: 16),
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: "Confirm Password",
                           hintText: "Enter your password again",
-                          labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                          prefixIcon: Icon(Icons.password),
+                          labelStyle:
+                              const TextStyle(fontWeight: FontWeight.bold),
+                          prefixIcon: const Icon(Icons.password),
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              setState(() {
+                                _confirmPasswordVisible =
+                                    !_confirmPasswordVisible;
+                              });
+                            },
+                            child: Icon(_passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                          ),
                         ),
                         // validator: confirmPasswordValidator,
                         onSaved: (value) {
                           confirmPassword = value!;
                         },
+                        obscureText: _confirmPasswordVisible,
                       ),
                       const SizedBox(height: 16),
                       TextFormField(

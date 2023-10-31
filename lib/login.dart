@@ -14,6 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
+  bool _passwordVisible = true;
 
   String? emailValidator(String? value) {
     if (value == null || value.isEmpty) {
@@ -90,14 +91,25 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: "Password",
                           hintText: "Enter your password",
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                            child: Icon(_passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                          ),
                         ),
                         validator: passwordValidator,
                         onSaved: (value) {
                           password = value!;
                         },
+                        obscureText: _passwordVisible,
                       ),
                       const SizedBox(height: 25),
                       ElevatedButton(
